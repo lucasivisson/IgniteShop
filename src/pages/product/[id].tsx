@@ -16,6 +16,14 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
+  const { isFallback } = useRouter();
+
+  if(isFallback) {
+    return (
+      <h2>Loading...</h2>
+    )
+  }
+
   return (
     <ProductContainer>
       <ImageContainer>
@@ -44,7 +52,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: [
       { params: { id: 'prod_NmnrvRfnfyDNGB' } }
     ],
-    fallback: true
+    fallback: 'blocking'
   }
 }
 
