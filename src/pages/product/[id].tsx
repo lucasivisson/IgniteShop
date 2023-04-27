@@ -37,11 +37,14 @@ export default function Product({ product }: ProductProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  // Quando usamos fallback false, precisamos carregar pelo menos os itens mais acessados, pois os que n foram carregados na build, so serão carregados na proxima renderização do revalidate.
+  // Quando usamos o true, ele vai carregar a pagina ja com os dados carregados, so que vai fazer um load para poder carregar e o usuário vai esperar um pouco.
+  // Quando usamos 'blocking', poderemos acessar na rota com o parametro isBlocking de dentro de useRouter que te retorna se ele ainda ta carregando ou n, e ai vc pode exibir um skeleton screen ou um icone de loading por exemplo.
   return {
     paths: [
       { params: { id: 'prod_NmnrvRfnfyDNGB' } }
     ],
-    fallback: false
+    fallback: true
   }
 }
 
