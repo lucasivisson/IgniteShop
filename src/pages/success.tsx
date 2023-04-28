@@ -12,7 +12,7 @@ export default function Success() {
         Uhuul <strong>Lucas Ivisson</strong>, sua <strong>Camiseta Beyond the Limits</strong> já está a caminho da sua casa.
       </p>
 
-      <Link href=""></Link>
+      <Link href="">Voltar ao catálogo</Link>
     </SuccessContainer>
   )
 }
