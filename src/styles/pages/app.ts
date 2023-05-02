@@ -29,13 +29,14 @@ export const IconCheckout = styled('div', {
   borderRadius: 8,
   display: 'flex',
   alignItems: 'center',
+  height: 50,
 
   '&:hover': {
     color: '$gray100',
   },
 
   span: {
-    margin: '-2rem -1.2rem 0 0',
+    margin: '-2.5rem -1.2rem 0 0',
     border: 'none',
     background: '$green300',
     color: '$gray100',
@@ -43,8 +44,32 @@ export const IconCheckout = styled('div', {
     fontSize: '0.75rem',
     borderRadius: '16px',
     padding: '0.2rem 0.4rem',
-    // position: 'relative',
-    // bottom: 53,
-    // left: 30,
   }
+});
+
+export const Checkout = styled('div', {
+  minHeight: '100vh',
+  background: '$gray800',
+  width: '40%',
+  left: '100%',
+  position: 'fixed',
+  zIndex: 2,
+  transition: 'left 0.5s ease-in-out',
+
+  variants: {
+    checkoutIsOpen: {
+      true: {
+        left: '70%',
+      }
+    }
+  }
+});
+
+export const CheckoutContainer = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  height: '100vh',
+  padding: '2.5rem 0'
 });
