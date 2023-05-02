@@ -30,6 +30,7 @@ export const IconCheckout = styled('div', {
   display: 'flex',
   alignItems: 'center',
   height: 50,
+  cursor: 'pointer',
 
   '&:hover': {
     color: '$gray100',
@@ -55,21 +56,27 @@ export const Checkout = styled('div', {
   position: 'fixed',
   zIndex: 2,
   transition: 'left 0.5s ease-in-out',
+  boxShadow: 'unset',
 
   variants: {
     checkoutIsOpen: {
       true: {
         left: '70%',
+        boxShadow: '2px 2px 20px 2px #202024',
       }
     }
   }
 });
 
 export const CheckoutContainer = styled('div', {
+  width: '100%',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-start',
   flexDirection: 'column',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   height: '100vh',
-  padding: '2.5rem 0'
+  padding: '2rem 2rem'
+});
+
+export const CloseCheckout = styled('div', {
 });

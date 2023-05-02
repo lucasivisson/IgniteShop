@@ -2,9 +2,9 @@ import { globalStyles } from '@/styles/global'
 import type { AppProps } from 'next/app'
 import logoImg from '../assets/logo.svg';
 import Image from 'next/image';
-import { Checkout, CheckoutContainer, Container, Header, IconCheckout } from '@/styles/pages/app';
+import { Checkout, CheckoutContainer, Container, Header, IconCheckout, CloseCheckout } from '@/styles/pages/app';
 import Link from 'next/link';
-import { Handbag } from '@phosphor-icons/react';
+import { Handbag, X } from '@phosphor-icons/react';
 import { useState } from 'react';
 
 globalStyles();
@@ -20,7 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Checkout checkoutIsOpen={checkoutIsOpen}>
         <CheckoutContainer>
-          <div onClick={handleSetCheckoutOpen}>X</div>
+          <CloseCheckout onClick={handleSetCheckoutOpen}>
+            <X size='24' weight='bold'></X>
+          </CloseCheckout>
           <div>
             <span>Sacola de compras</span>
             <div>
@@ -39,14 +41,17 @@ export default function App({ Component, pageProps }: AppProps) {
                 <button>Remover</button>
               </div>
             </div>
+          </div>
+          <div>
             <div>
-              <Image src={logoImg} alt=""></Image>
-              <div>
-                <span>Camiseta Beyond the Limits</span>
-                <p>R$ 62,90</p>
-                <button>Remover</button>
-              </div>
+              <span>Quantidade</span>
+              <span>3 itens</span>
             </div>
+            <div>
+              <span>Valor total</span>
+              <span>R$ 270,00</span>
+            </div>
+            <button>Finalizar compra</button>
           </div>
         </CheckoutContainer>
       </Checkout>
