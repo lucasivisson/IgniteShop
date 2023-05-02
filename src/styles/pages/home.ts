@@ -61,4 +61,21 @@ export const Product = styled('div', {
       opacity: 1,
     }
   }
-})
+});
+
+export const TitlePriceContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+export const IconCheckout = styled('div', {
+  background: '$green500',
+  transition: 'all 0.2s ease-in-out',
+  color: '$white',
+  padding: '0.4rem 0.5rem',
+  borderRadius: 8,
+
+  '&:hover': {
+    background: '$green300',
+  }
+});
