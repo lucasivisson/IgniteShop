@@ -3,10 +3,10 @@ import type { AppProps } from 'next/app'
 import logoImg from '../assets/logo.svg';
 import Variant6 from '../assets/Variant6.png';
 import Variant7 from '../assets/Variant7.png';
-// import Variant8 from '../assets/Variant8.png';
-// import Variant9 from '../assets/Variant9.png';
+import Variant8 from '../assets/Variant8.png';
+import Variant9 from '../assets/Variant9.png';
 import Image from 'next/image';
-import { Checkout, CheckoutContainer, Container, Header, IconCheckout, CloseCheckout, ImageProductCheckout, ProductCheckout, TotalProductsCheckout, MainCheckout } from '@/styles/pages/app';
+import { Checkout, CheckoutContainer, Container, Header, IconCheckout, CloseCheckout, ImageProductCheckout, ProductCheckout, TotalProductsCheckout, HeaderContainer, BodyCheckoutContainer, QuantityElementsCheckout, TotalValueCheckout, FooterCheckout, InfoProductCheckout } from '@/styles/pages/app';
 import Link from 'next/link';
 import { Handbag, X } from '@phosphor-icons/react';
 import { useState } from 'react';
@@ -24,25 +24,47 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Checkout checkoutIsOpen={checkoutIsOpen}>
         <CheckoutContainer>
-          <div>
+          <BodyCheckoutContainer>
             <CloseCheckout onClick={handleSetCheckoutOpen}>
               <X size='24' weight='bold'></X>
             </CloseCheckout>
-            <span>Sacola de compras</span>
+            <HeaderContainer>
+              <span>Sacola de compras</span>
+            </HeaderContainer>
             <TotalProductsCheckout>
               <ProductCheckout>
                 <ImageProductCheckout>
                   <Image src={Variant6} alt=""></Image>
                 </ImageProductCheckout>
-                <div>
+                <InfoProductCheckout>
                   <span>Camiseta Beyond the Limits</span>
                   <p>R$ 62,90</p>
                   <button>Remover</button>
-                </div>
+                </InfoProductCheckout>
               </ProductCheckout>
               <ProductCheckout>
                 <ImageProductCheckout>
                   <Image src={Variant7} alt=""></Image>
+                </ImageProductCheckout>
+                <InfoProductCheckout>
+                  <span>Camiseta Beyond the Limits</span>
+                  <p>R$ 62,90</p>
+                  <button>Remover</button>
+                </InfoProductCheckout>
+              </ProductCheckout>
+              <ProductCheckout>
+                <ImageProductCheckout>
+                  <Image src={Variant8} alt=""></Image>
+                </ImageProductCheckout>
+                <InfoProductCheckout>
+                  <span>Camiseta Beyond the Limits</span>
+                  <p>R$ 62,90</p>
+                  <button>Remover</button>
+                </InfoProductCheckout>
+              </ProductCheckout>
+              <ProductCheckout>
+                <ImageProductCheckout>
+                  <Image src={Variant9} alt=""></Image>
                 </ImageProductCheckout>
                 <div>
                   <span>Camiseta Beyond the Limits</span>
@@ -51,18 +73,20 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
               </ProductCheckout>
             </TotalProductsCheckout>
-          </div>
-          <footer>
+          </BodyCheckoutContainer>
+          <FooterCheckout>
             <div>
-              <span>Quantidade</span>
-              <span>3 itens</span>
-            </div>
-            <div>
-              <span>Valor total</span>
-              <span>R$ 270,00</span>
+              <QuantityElementsCheckout>
+                <span>Quantidade</span>
+                <p>3 itens</p>
+              </QuantityElementsCheckout>
+              <TotalValueCheckout>
+                <span>Valor total</span>
+                <p>R$ 270,00</p>
+              </TotalValueCheckout>
             </div>
             <button>Finalizar compra</button>
-          </footer>
+          </FooterCheckout>
         </CheckoutContainer>
       </Checkout>
       <Container>

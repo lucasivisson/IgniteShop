@@ -51,7 +51,7 @@ export const IconCheckout = styled('div', {
 export const Checkout = styled('aside', {
   minHeight: '100vh',
   background: '$gray800',
-  width: '40%',
+  width: '30%',
   left: '100%',
   position: 'fixed',
   zIndex: 2,
@@ -75,10 +75,15 @@ export const CheckoutContainer = styled('div', {
   flexDirection: 'column',
   justifyContent: 'space-between',
   height: '100vh',
-  padding: '2rem 2rem'
+  padding: '2rem 2rem',
 });
 
 export const CloseCheckout = styled('div', {
+  marginBottom: '1rem',
+  display: 'flex',
+  justifyContent: 'flex-end',
+  width: '100%',
+
   svg: {
     cursor: 'pointer'
   }
@@ -101,11 +106,13 @@ export const ImageProductCheckout = styled('div', {
   }
 });
 
-export const TotalProductsCheckout = styled('body', {
+export const TotalProductsCheckout = styled('div', {
   background: '$gray800',
   display: 'flex',
   flexDirection: 'column',
-  gap: '2rem'
+  gap: '2rem',
+  maxHeight: '100%',
+  overflow: 'auto',
 });
 
 export const MainCheckout = styled('main', {
@@ -113,4 +120,84 @@ export const MainCheckout = styled('main', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
+});
+
+export const HeaderContainer = styled('header', {
+  color: '$gray100',
+  fontSize: '1.25rem',
+  lineHeight: '160%',
+  marginBottom: '1rem',
+});
+
+export const BodyCheckoutContainer = styled('div', {
+  width: '100%',
+  maxHeight: '55%',
+});
+
+export const QuantityElementsCheckout = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+  lineHeight: '160%',
+
+  p: {
+    fontSize: '1.125rem',
+  }
+});
+
+export const TotalValueCheckout = styled('div', {
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+  lineHeight: '160%',
+  fontWeight: 'bold',
+
+  span: {
+    fontSize: '1.125rem',
+  },
+
+  p: {
+    fontSize: '1.5rem',
+  }
+});
+
+export const FooterCheckout = styled('footer', {
+  width: '100%',
+
+  '> div': {
+    marginBottom: '1rem',
+  },
+
+  button: {
+    width: '100%',
+    marginTop: 'auto',
+    backgroundColor: '$green500',
+    border: 0,
+    color: '$white',
+    borderRadius: 8,
+    padding: '1.25rem',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    fontSize: '$md',
+
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    },
+
+    '&:not(:disabled):hover': {
+      backgroundColor: '$green300'
+    },
+  }
+});
+
+export const InfoProductCheckout = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'space-around',
 });
