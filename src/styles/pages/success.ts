@@ -32,6 +32,11 @@ export const SuccessContainer = styled('main', {
     '&:hover': {
       color: '$green300',
     }
+  },
+
+  div: {
+    display: 'flex',
+    alignItems: 'center',
   }
 });
 
@@ -39,11 +44,12 @@ export const SuccessContainer = styled('main', {
 export const ImageContainer = styled('main', {
   width: '100%',
   maxWidth: 130,
-  height: 145,
+  height: 130,
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
-  borderRadius: 8,
+  borderRadius: '50%',
   padding: '0.25rem',
-  marginTop: '4rem',
+  margin: '4rem -1.25rem 0 -1.25rem',
+  boxShadow: '2px 2px 20px 2px #202024',
 
   display: 'flex',
   alignItems: 'center',

@@ -56,7 +56,7 @@ export const ProductDetails = styled('div', {
     border: 0,
     color: '$white',
     borderRadius: 8,
-    padding: '$lg',
+    padding: '1.25rem',
     cursor: 'pointer',
     fontWeight: 'bold',
     fontSize: '$md',

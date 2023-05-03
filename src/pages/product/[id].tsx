@@ -21,6 +21,8 @@ interface ProductProps {
 export default function Product({ product }: ProductProps) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
+  console.log(product.id);
+
   async function handleBuyProduct() {
     try {
       setIsCreatingCheckoutSession(true);
