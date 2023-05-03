@@ -200,4 +200,24 @@ export const InfoProductCheckout = styled('div', {
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'space-around',
+
+  span: {
+    fontSize: '$md',
+    lineHeight: '160%',
+  },
+
+  button: {
+    backgroundColor: 'transparent',
+    color: '$green300',
+    border: 0,
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    fontSize: '1rem',
+  },
+
+  p: {
+    lineHeight: '160%',
+    fontWeight: 'bold',
+    fontSize: '$md',
+  }
 });

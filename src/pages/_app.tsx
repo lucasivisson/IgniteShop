@@ -25,8 +25,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <Checkout checkoutIsOpen={checkoutIsOpen}>
         <CheckoutContainer>
           <BodyCheckoutContainer>
-            <CloseCheckout onClick={handleSetCheckoutOpen}>
-              <X size='24' weight='bold'></X>
+            <CloseCheckout>
+              <X size='24' weight='bold' onClick={handleSetCheckoutOpen}></X>
             </CloseCheckout>
             <HeaderContainer>
               <span>Sacola de compras</span>
@@ -66,11 +66,11 @@ export default function App({ Component, pageProps }: AppProps) {
                 <ImageProductCheckout>
                   <Image src={Variant9} alt=""></Image>
                 </ImageProductCheckout>
-                <div>
+                <InfoProductCheckout>
                   <span>Camiseta Beyond the Limits</span>
                   <p>R$ 62,90</p>
                   <button>Remover</button>
-                </div>
+                </InfoProductCheckout>
               </ProductCheckout>
             </TotalProductsCheckout>
           </BodyCheckoutContainer>
