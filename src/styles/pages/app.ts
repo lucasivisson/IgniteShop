@@ -48,7 +48,7 @@ export const IconCheckout = styled('div', {
   }
 });
 
-export const Checkout = styled('div', {
+export const Checkout = styled('aside', {
   minHeight: '100vh',
   background: '$gray800',
   width: '40%',
@@ -79,4 +79,38 @@ export const CheckoutContainer = styled('div', {
 });
 
 export const CloseCheckout = styled('div', {
+  svg: {
+    cursor: 'pointer'
+  }
+});
+
+export const ProductCheckout = styled('div', {
+  display: 'flex',
+  gap: '1rem'
+});
+
+export const ImageProductCheckout = styled('div', {
+  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+  borderRadius: 8,
+  maxWidth: 100,
+  height: 100,
+
+  img: {
+    width: 100,
+    height: 100,
+  }
+});
+
+export const TotalProductsCheckout = styled('body', {
+  background: '$gray800',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2rem'
+});
+
+export const MainCheckout = styled('main', {
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
 });

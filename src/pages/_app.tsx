@@ -1,8 +1,12 @@
 import { globalStyles } from '@/styles/global'
 import type { AppProps } from 'next/app'
 import logoImg from '../assets/logo.svg';
+import Variant6 from '../assets/Variant6.png';
+import Variant7 from '../assets/Variant7.png';
+// import Variant8 from '../assets/Variant8.png';
+// import Variant9 from '../assets/Variant9.png';
 import Image from 'next/image';
-import { Checkout, CheckoutContainer, Container, Header, IconCheckout, CloseCheckout } from '@/styles/pages/app';
+import { Checkout, CheckoutContainer, Container, Header, IconCheckout, CloseCheckout, ImageProductCheckout, ProductCheckout, TotalProductsCheckout, MainCheckout } from '@/styles/pages/app';
 import Link from 'next/link';
 import { Handbag, X } from '@phosphor-icons/react';
 import { useState } from 'react';
@@ -20,29 +24,35 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Checkout checkoutIsOpen={checkoutIsOpen}>
         <CheckoutContainer>
-          <CloseCheckout onClick={handleSetCheckoutOpen}>
-            <X size='24' weight='bold'></X>
-          </CloseCheckout>
           <div>
+            <CloseCheckout onClick={handleSetCheckoutOpen}>
+              <X size='24' weight='bold'></X>
+            </CloseCheckout>
             <span>Sacola de compras</span>
-            <div>
-              <Image src={logoImg} alt=""></Image>
-              <div>
-                <span>Camiseta Beyond the Limits</span>
-                <p>R$ 62,90</p>
-                <button>Remover</button>
-              </div>
-            </div>
-            <div>
-              <Image src={logoImg} alt=""></Image>
-              <div>
-                <span>Camiseta Beyond the Limits</span>
-                <p>R$ 62,90</p>
-                <button>Remover</button>
-              </div>
-            </div>
+            <TotalProductsCheckout>
+              <ProductCheckout>
+                <ImageProductCheckout>
+                  <Image src={Variant6} alt=""></Image>
+                </ImageProductCheckout>
+                <div>
+                  <span>Camiseta Beyond the Limits</span>
+                  <p>R$ 62,90</p>
+                  <button>Remover</button>
+                </div>
+              </ProductCheckout>
+              <ProductCheckout>
+                <ImageProductCheckout>
+                  <Image src={Variant7} alt=""></Image>
+                </ImageProductCheckout>
+                <div>
+                  <span>Camiseta Beyond the Limits</span>
+                  <p>R$ 62,90</p>
+                  <button>Remover</button>
+                </div>
+              </ProductCheckout>
+            </TotalProductsCheckout>
           </div>
-          <div>
+          <footer>
             <div>
               <span>Quantidade</span>
               <span>3 itens</span>
@@ -52,7 +62,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <span>R$ 270,00</span>
             </div>
             <button>Finalizar compra</button>
-          </div>
+          </footer>
         </CheckoutContainer>
       </Checkout>
       <Container>

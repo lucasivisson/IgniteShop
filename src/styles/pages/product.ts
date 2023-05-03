@@ -25,7 +25,6 @@ export const ImageContainer = styled('div', {
   img: {
     objectFit: 'cover'
   }
-
 })
 
 export const ProductDetails = styled('div', {
@@ -71,5 +70,4 @@ export const ProductDetails = styled('div', {
       backgroundColor: '$green300'
     }
   }
-
 })
