@@ -124,7 +124,7 @@ export const MainCheckout = styled('main', {
 
 export const HeaderContainer = styled('header', {
   color: '$gray100',
-  fontSize: '1.25rem',
+  fontSize: '$lg',
   lineHeight: '160%',
   marginBottom: '1rem',
 });
@@ -143,7 +143,7 @@ export const QuantityElementsCheckout = styled('div', {
   lineHeight: '160%',
 
   p: {
-    fontSize: '1.125rem',
+    fontSize: '$md',
   }
 });
 
@@ -157,11 +157,11 @@ export const TotalValueCheckout = styled('div', {
   fontWeight: 'bold',
 
   span: {
-    fontSize: '1.125rem',
+    fontSize: '$md',
   },
 
   p: {
-    fontSize: '1.5rem',
+    fontSize: '$xl',
   }
 });
 
@@ -179,7 +179,7 @@ export const FooterCheckout = styled('footer', {
     border: 0,
     color: '$white',
     borderRadius: 8,
-    padding: '1.25rem',
+    padding: '$lg',
     cursor: 'pointer',
     fontWeight: 'bold',
     fontSize: '$md',
