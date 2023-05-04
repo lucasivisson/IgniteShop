@@ -28,6 +28,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
   });
 
   return response.status(201).json({
-    checkoutUrl: checkoutSession.url
+    sessionId: checkoutSession.id,
+    checkoutUrl: checkoutSession.url,
   })
 }

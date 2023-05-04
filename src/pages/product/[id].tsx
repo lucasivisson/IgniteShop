@@ -6,6 +6,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import Stripe from "stripe";
+import { useShoppingCart } from "use-shopping-cart";
 
 interface ProductProps {
   product: {
@@ -19,9 +20,8 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
+  const { addItem } = useShoppingCart();
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
-
-  console.log(product.id);
 
   async function handleBuyProduct() {
     try {
@@ -70,7 +70,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // Quando usamos 'blocking', poderemos acessar na rota com o parametro isBlocking de dentro de useRouter que te retorna se ele ainda ta carregando ou n, e ai vc pode exibir um skeleton screen ou um icone de loading por exemplo.
   return {
     paths: [
-      { params: { id: 'prod_NmnrvRfnfyDNGB' } }
+      { params: { id: '' } }
     ],
     fallback: true
   }

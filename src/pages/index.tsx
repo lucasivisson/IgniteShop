@@ -8,6 +8,7 @@ import 'keen-slider/keen-slider.min.css'
 import Stripe from "stripe"
 import Head from 'next/head';
 import { Handbag } from "@phosphor-icons/react";
+import { useShoppingCart } from "use-shopping-cart";
 
 interface HomeProps {
   products: {
