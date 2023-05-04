@@ -8,24 +8,26 @@ import 'keen-slider/keen-slider.min.css'
 import Stripe from "stripe"
 import Head from 'next/head';
 import { Handbag } from "@phosphor-icons/react";
-import { useShoppingCart } from "use-shopping-cart";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 
 interface HomeProps {
   products: {
     id: string;
     name: string;
     imageUrl: string;
-    price: string;
+    price: number;
   }[]
 }
 
 export default function Home({ products }: HomeProps) {
+  const { addItem } = useShoppingCart();
+
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
       spacing: 48,
     }
-  })
+  });
 
   return (
     <>
@@ -35,21 +37,26 @@ export default function Home({ products }: HomeProps) {
       <HomeContainer ref={sliderRef} className="keen-slider">
         {products.map(product => {
           return (
-            <Link href={`/product/${product.id}`} key={product.id} prefetch={false}>
-              <Product className="keen-slider__slide">
+            <Product className="keen-slider__slide" key={product.id}>
+              <Link href={`/product/${product.id}`} prefetch={false}>
                 <Image src={product.imageUrl} width={520} height={480} alt=""/>
-
-                <footer>
-                  <TitlePriceContainer>
-                    <strong>{product.name}</strong>
-                    <span>{product.price}</span>
-                  </TitlePriceContainer>
-                  <IconCheckout>
-                    <Handbag size={32} />
-                  </IconCheckout>
-                </footer>
-              </Product>
-            </Link>
+              </Link>
+              <footer>
+                <TitlePriceContainer>
+                  <strong>{product.name}</strong>
+                  <span>{formatCurrencyString({value: product.price, currency: 'BRL', language: 'pt-BR'})}</span>
+                </TitlePriceContainer>
+                <IconCheckout onClick={() => addItem({
+                  id: product.id,
+                  name: product.name,
+                  price: product.price,
+                  image: product.imageUrl,
+                  currency: "BRL"
+                })}>
+                  <Handbag size={32} />
+                </IconCheckout>
+              </footer>
+            </Product>
           )
         })}
       </HomeContainer>
@@ -69,10 +76,11 @@ export const getStaticProps: GetStaticProps = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-      }).format((price.unit_amount || 0) / 100),
+      // price: new Intl.NumberFormat('pt-BR', {
+      //   style: 'currency',
+      //   currency: 'BRL',
+      // }).format((price.unit_amount || 0) / 100),
+      price: price.unit_amount,
     }
   })
 

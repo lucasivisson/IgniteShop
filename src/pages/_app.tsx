@@ -1,31 +1,26 @@
 import { globalStyles } from '@/styles/global'
 import type { AppProps } from 'next/app'
-import logoImg from '../assets/logo.svg';
-import Image from 'next/image';
-import { Container, Header, IconCheckout } from '@/styles/pages/app';
-import Link from 'next/link';
-import { Handbag } from '@phosphor-icons/react';
+import { Container } from '@/styles/pages/app';
 import CheckoutComponent from '@/components/CheckoutComponent';
 import { CartProvider } from 'use-shopping-cart'
+import HeaderComponent from '@/components/HeaderComponent';
+import { useState } from 'react';
 
 globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [checkoutIsOpen, setCheckoutIsOpen] = useState<boolean>(false);
+
+  function handleSetCheckoutOpen() {
+    setCheckoutIsOpen(!checkoutIsOpen);
+  }
+
   return (
     <>
       <CartProvider shouldPersist={true} cartMode="checkout-session" stripe={`${process.env.STRIPE_PUBLIC_KEY}`} currency="BRL">
-        <CheckoutComponent/>
+        <CheckoutComponent checkoutIsOpen={checkoutIsOpen} handleSetCheckoutOpen={handleSetCheckoutOpen}/>
         <Container>
-          <Header>
-            <Link href="/">
-              <Image src={logoImg} alt="" />
-            </Link>
-            <IconCheckout>
-              <Handbag size={32} />
-              <span>1</span>
-            </IconCheckout>
-          </Header>
-      
+          <HeaderComponent checkoutIsOpen={checkoutIsOpen} handleSetCheckoutOpen={handleSetCheckoutOpen}/>
           <Component {...pageProps} />
         </Container>
       </CartProvider>

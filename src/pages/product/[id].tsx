@@ -6,14 +6,14 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import Stripe from "stripe";
-import { useShoppingCart } from "use-shopping-cart";
+import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 
 interface ProductProps {
   product: {
     id: string;
     name: string;
     imageUrl: string;
-    price: string;
+    price: number;
     description: string;
     defaultPriceId: string;
   }
@@ -51,11 +51,17 @@ export default function Product({ product }: ProductProps) {
 
         <ProductDetails>
           <h1>{product.name}</h1>
-          <span>{product.price}</span>
+          <span>{formatCurrencyString({value: product.price, currency: 'BRL', language: 'pt-BR'})}</span>
 
           <p>{product.description}</p>
 
-          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
+          <button disabled={isCreatingCheckoutSession} onClick={() => addItem({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.imageUrl,
+            currency: "BRL"
+          })}>
             Colocar na sacola
           </button>
         </ProductDetails>
@@ -91,10 +97,11 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
         id: product.id,
         name: product.name,
         imageUrl: product.images[0],
-        price: new Intl.NumberFormat('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-        }).format((price.unit_amount || 0) / 100),
+        // price: new Intl.NumberFormat('pt-BR', {
+        //   style: 'currency',
+        //   currency: 'BRL',
+        // }).format((price.unit_amount || 0) / 100),
+        price: price.unit_amount,
         description: product.description,
         defaultPriceId: price.id,
       }

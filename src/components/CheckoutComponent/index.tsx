@@ -7,13 +7,12 @@ import Variant7 from '../../assets/Variant7.png';
 import Variant8 from '../../assets/Variant8.png';
 import Variant9 from '../../assets/Variant9.png';
 
-export default function CheckoutComponent() {
-  const [checkoutIsOpen, setCheckoutIsOpen] = useState<boolean>(false);
+type CheckoutProps = {
+  checkoutIsOpen: boolean;
+  handleSetCheckoutOpen: () => void;
+}
 
-  function handleSetCheckoutOpen() {
-    setCheckoutIsOpen(!checkoutIsOpen);
-  }
-
+export default function CheckoutComponent({ checkoutIsOpen ,handleSetCheckoutOpen}: CheckoutProps) {
   return (
     <Checkout checkoutIsOpen={checkoutIsOpen}>
       <CheckoutContainer>
