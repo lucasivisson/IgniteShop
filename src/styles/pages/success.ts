@@ -57,5 +57,13 @@ export const ImageContainer = styled('main', {
 
   img: {
     objectFit: 'cover'
+  },
+
+  variants: {
+    moreThanOne: {
+      true: {
+        margin: '4rem'
+      }
+    }
   }
 })

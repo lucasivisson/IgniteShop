@@ -18,10 +18,8 @@ type LineItemsProps = {
   quantity: number
 }
 
-type typeToComplementCartItem = {price_data: { defaultPriceId: string}};
-
 export default function CheckoutComponent({ checkoutIsOpen ,handleSetCheckoutOpen}: CheckoutProps) {
-  const { cartDetails, cartCount, formattedTotalPrice, removeItem, incrementItem,decrementItem } = useShoppingCart();
+  const { cartDetails, cartCount, formattedTotalPrice, removeItem, incrementItem,decrementItem, clearCart } = useShoppingCart();
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
   function handleRemove(id: string) {
@@ -51,6 +49,7 @@ export default function CheckoutComponent({ checkoutIsOpen ,handleSetCheckoutOpe
 
       const { checkoutUrl } = response.data;
 
+      clearCart();
       window.location.href = checkoutUrl;
     } catch(err) {
       setIsCreatingCheckoutSession(false);
