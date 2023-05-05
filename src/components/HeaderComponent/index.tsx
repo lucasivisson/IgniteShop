@@ -11,7 +11,7 @@ type CheckoutProps = {
 }
 
 export default function HeaderComponent({ checkoutIsOpen ,handleSetCheckoutOpen}: CheckoutProps) {
-  const { cartDetails } = useShoppingCart();
+  const { cartDetails, cartCount } = useShoppingCart();
 
   return (
     <Header>
@@ -21,7 +21,7 @@ export default function HeaderComponent({ checkoutIsOpen ,handleSetCheckoutOpen}
       <IconCheckout onClick={handleSetCheckoutOpen}>
         <Handbag size={32} />
         {Object.keys(cartDetails || {}).length > 0 && (
-          <span>{`${Object.keys(cartDetails || {}).length}`}</span>
+          <span>{cartCount}</span>
         )}
       </IconCheckout>
     </Header>

@@ -75,7 +75,7 @@ export const CheckoutContainer = styled('div', {
   flexDirection: 'column',
   justifyContent: 'space-between',
   height: '100vh',
-  padding: '2rem 2rem',
+  padding: '1rem 1rem',
 });
 
 export const CloseCheckout = styled('div', {
@@ -90,6 +90,13 @@ export const CloseCheckout = styled('div', {
 });
 
 export const ProductCheckout = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginRight: '0.5rem',
+});
+
+export const ImageInfoCheckout = styled('div', {
   display: 'flex',
   gap: '1rem'
 });
@@ -219,5 +226,31 @@ export const InfoProductCheckout = styled('div', {
     lineHeight: '160%',
     fontWeight: 'bold',
     fontSize: '$md',
+  }
+});
+
+export const ButtonsContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  backgroundColor: '$gray100',
+  padding: '0.2rem',
+  borderRadius: 5,
+
+  button: {
+    border: 0,
+    padding: '0.2rem',
+    backgroundColor: 'transparent',
+    color: '$green500',
+    borderRadius: 5,
+    fontSize: '$lg',
+
+    '&:hover': {
+      color: '$green300',
+    }
+  },
+
+  span: {
+    color: '$gray900',
   }
 });
