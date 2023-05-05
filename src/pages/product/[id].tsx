@@ -1,10 +1,8 @@
 import { stripe } from "@/lib/stripe";
 import { ImageContainer, ProductContainer, ProductDetails } from "@/styles/pages/product";
-import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
 import Stripe from "stripe";
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
 
@@ -21,7 +19,6 @@ interface ProductProps {
 
 export default function Product({ product }: ProductProps) {
   const { addItem } = useShoppingCart();
-  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
   return (
     <>
@@ -39,12 +36,12 @@ export default function Product({ product }: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button disabled={isCreatingCheckoutSession} onClick={() => addItem({
+          <button onClick={() => addItem({
             id: product.id,
             name: product.name,
             price: product.price,
             image: product.imageUrl,
-            currency: "BRL"
+            currency: "BRL",
           })}>
             Colocar na sacola
           </button>
@@ -81,10 +78,6 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
         id: product.id,
         name: product.name,
         imageUrl: product.images[0],
-        // price: new Intl.NumberFormat('pt-BR', {
-        //   style: 'currency',
-        //   currency: 'BRL',
-        // }).format((price.unit_amount || 0) / 100),
         price: price.unit_amount,
         description: product.description,
         defaultPriceId: price.id,

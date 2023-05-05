@@ -244,6 +244,7 @@ export const ButtonsContainer = styled('div', {
     color: '$green500',
     borderRadius: 5,
     fontSize: '$lg',
+    cursor: 'pointer',
 
     '&:hover': {
       color: '$green300',

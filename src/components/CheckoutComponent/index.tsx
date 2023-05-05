@@ -5,14 +5,24 @@ import { useShoppingCart } from "use-shopping-cart";
 import { CartEntry as ICartEntry
 } from "use-shopping-cart/core";
 import { ButtonsContainer } from "@/styles/pages/app";
+import { useState } from "react";
+import axios from "axios";
 
 type CheckoutProps = {
   checkoutIsOpen: boolean;
   handleSetCheckoutOpen: () => void;
 }
 
+type LineItemsProps = {
+  price: string,
+  quantity: number
+}
+
+type typeToComplementCartItem = {price_data: { defaultPriceId: string}};
+
 export default function CheckoutComponent({ checkoutIsOpen ,handleSetCheckoutOpen}: CheckoutProps) {
   const { cartDetails, cartCount, formattedTotalPrice, removeItem, incrementItem,decrementItem } = useShoppingCart();
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
   function handleRemove(id: string) {
     removeItem(id);
@@ -23,7 +33,29 @@ export default function CheckoutComponent({ checkoutIsOpen ,handleSetCheckoutOpe
   }
 
   function handleIncrementProduct(id: string) {
-    decrementItem(id);
+    incrementItem(id);
+  }
+
+  async function handleBuyProduct() {
+    let line_items = [{} as LineItemsProps];
+    if(cartDetails) {
+      line_items = Object.values(cartDetails).map((cartItem: ICartEntry) => { return {
+        price: cartItem.defaultPriceId,
+        quantity: cartItem.quantity,
+      }});
+    }
+
+    try {
+      setIsCreatingCheckoutSession(true);
+      const response = await axios.post('/api/checkout', {line_items});
+
+      const { checkoutUrl } = response.data;
+
+      window.location.href = checkoutUrl;
+    } catch(err) {
+      setIsCreatingCheckoutSession(false);
+      alert('Falha ao redirecionar ao checkout!');
+    }
   }
 
   return (
@@ -77,7 +109,7 @@ export default function CheckoutComponent({ checkoutIsOpen ,handleSetCheckoutOpe
               <p>{formattedTotalPrice}</p>
             </TotalValueCheckout>
           </div>
-          <button>Finalizar compra</button>
+          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>Finalizar compra</button>
         </FooterCheckout>
       </CheckoutContainer>
     </Checkout>
